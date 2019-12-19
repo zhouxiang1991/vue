@@ -16,6 +16,7 @@ export function traverse (val: any) {
   seenObjects.clear()
 }
 
+// 该方法只是便利数组或者对象。目的只是为了触发对象或数组get方法。
 function _traverse (val: any, seen: SimpleSet) {
   let i, keys
   const isA = Array.isArray(val)

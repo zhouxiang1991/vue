@@ -27,8 +27,10 @@ export function initMixin (Vue: Class<Component>) {
     }
 
     // a flag to avoid this being observed
+    // 组件标志，避免被observe。
     vm._isVue = true
     // merge options
+    // 处理合并options。
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
@@ -48,6 +50,7 @@ export function initMixin (Vue: Class<Component>) {
       vm._renderProxy = vm
     }
     // expose real self
+    // 初始化各种类型的数据，本质上是在vm实例上挂载各种属性。
     vm._self = vm
     initLifecycle(vm)
     initEvents(vm)
@@ -64,7 +67,8 @@ export function initMixin (Vue: Class<Component>) {
       mark(endTag)
       measure(`vue ${vm._name} init`, startTag, endTag)
     }
-
+    
+    // 如果有el，就立即挂载组件。
     if (vm.$options.el) {
       vm.$mount(vm.$options.el)
     }
